@@ -2,81 +2,58 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <title>Well‑Be – Digital Well‑Being</title>
+  <meta name="description" content="Well‑Be is your digital companion for mental health and stress management.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Well-Be Health Tracking App</title>
-  <meta name="description" content="Well-Be health tracking app with comprehensive Quick Actions functionality. Includes HRV measurement, breathing exercises, sleep stories, workout routines, and device connections.">
-  <meta name="keywords" content="health, tracking, HRV, sleep, breathing, wellness, exercise, fitness, quick actions, app, device connection">
-  <meta name="author" content="asilva777">
-  <meta property="og:title" content="Well-Be Health Tracking App">
-  <meta property="og:description" content="Comprehensive health tracking app with HRV measurement, quick actions, sleep, exercise, and more.">
-  <meta property="og:image" content="/assets/wellbe-og-image.png">
-  <meta property="og:url" content="https://github.com/asilva777/well-be">
-  <meta property="og:type" content="website">
-  <meta property="fb:app_id" content="">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:creator" content="@asilva777">
-  <meta name="twitter:title" content="Well-Be Health Tracking App">
-  <meta name="twitter:description" content="Track your health with HRV, quick actions, sleep, breathing, and more.">
-  <meta name="twitter:image" content="/assets/wellbe-og-image.png">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self';">
-
-  <!-- Preload critical resources -->
-  <link rel="preload" href="/style.css" as="style">
-  <link rel="preload" href="/src/main.tsx" as="script">
-  <!-- You can add custom font preloads here if applicable -->
-  <!-- <link rel="preload" href="/fonts/your-font.woff2" as="font" type="font/woff2" crossorigin="anonymous"> -->
-
-  <!-- Favicon and fallback -->
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="icon" type="image/png" href="/default-icon.png">
-
-  <!-- Main stylesheet -->
-  <link rel="stylesheet" href="/style.css">
+  <meta name="theme-color" content="#c80ec9">
+  <link rel="manifest" href="manifest.json">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald&family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <noscript>
-    <strong>We're sorry but Well-Be doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-  </noscript>
-  <div id="root"></div>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- Main script: entry point for React app -->
-  <script type="module" src="/src/main.tsx"></script>
-  <!-- Additional JS -->
-  <script src="/script.js" async></script>
+  <header role="banner">
+    <nav role="navigation" aria-label="Main">
+      <h1 class="logo">Well‑Be</h1>
+      <ul class="menu">
+        <li><a href="#">Home</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <!-- Google Analytics Example (Replace with your GA_TRACKING_ID) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_TRACKING_ID"></script>
+  <main id="main">
+    <section id="features">
+      <h2>Features</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Stress Tracker</h3>
+          <p>Log your stress levels and identify triggers.</p>
+        </article>
+        <article class="card">
+          <h3>Mindful Breaks</h3>
+          <p>Short breathing and mindfulness exercises.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>About Well‑Be</h2>
+      <p>We help you track, reflect, and improve emotional well‑being.</p>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <p>&copy; 2025 Well‑Be. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js" defer></script>
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'GA_TRACKING_ID');
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
   </script>
-
-  <!-- Comments: Linked files and components in repo (for build tools) -->
-  <!--
-    The following files are part of the repository and are imported via the main React app (main.tsx, App.tsx, etc.):
-      - style.css (linked above)
-      - script.js (linked above)
-      - postcss.config.js (used by the build system, not linked in HTML)
-      - package.json (used by the build system, not linked in HTML)
-      - eslint.config.js (used by the build system, not linked in HTML)
-      - components.json (used by the build system, not linked in HTML)
-      - App.css (imported in App.tsx)
-      - App.tsx
-      - src/hooks/use-mobile.tsx
-      - src/components/ui/ActivitySummary.tsx
-      - src/components/ui/AppLayout.tsx
-      - src/components/ui/DataPointModal.tsx
-      - src/components/ui/EnhancedHRVChart.tsx
-      - src/components/ui/HRVChart.tsx
-      - src/components/ui/HRVMeasurement.tsx
-      - src/components/ui/Header.tsx
-      - src/components/ui/InteractiveHealthMetrics.tsx
-      - src/components/ui/QuickActions.tsx
-      - src/components/ui/theme-provider.tsx
-
-    These will be bundled by your frontend tool (e.g., Vite, Webpack, or CRA) and referenced via /src/main.tsx.
-  -->
 </body>
 </html>
