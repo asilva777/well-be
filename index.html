@@ -1,59 +1,26 @@
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Well‑Be – Digital Well‑Being</title>
-  <meta name="description" content="Well‑Be is your digital companion for mental health and stress management.">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#c80ec9">
-  <link rel="manifest" href="manifest.json">
-  <link href="https://fonts.googleapis.com/css2?family=Oswald&family=Montserrat&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Well-Be Health Tracker</title>
+    <meta name="description" content="Track heart health, stress, and sleep with AI insights for improved wellness." />
+    <meta name="author" content="Famous.ai" />
+    <link rel="icon" type="image/svg+xml" href="/placeholder.svg" />
 
-  <header role="banner">
-    <nav role="navigation" aria-label="Main">
-      <h1 class="logo">Well‑Be</h1>
-      <ul class="menu">
-        <li><a href="#">Home</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#about">About</a></li>
-      </ul>
-    </nav>
-  </header>
+    <meta property="og:title" content="Well-Be Health Tracker" />
+    <meta property="og:description" content="Track heart health, stress, and sleep with AI insights for improved wellness." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/og.jpg" />
 
-  <main id="main">
-    <section id="features">
-      <h2>Features</h2>
-      <div class="cards">
-        <article class="card">
-          <h3>Stress Tracker</h3>
-          <p>Log your stress levels and identify triggers.</p>
-        </article>
-        <article class="card">
-          <h3>Mindful Breaks</h3>
-          <p>Short breathing and mindfulness exercises.</p>
-        </article>
-      </div>
-    </section>
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@Famous_AI" />
+    <meta name="twitter:image" content="/og.jpg" />
+  </head>
 
-    <section id="about">
-      <h2>About Well‑Be</h2>
-      <p>We help you track, reflect, and improve emotional well‑being.</p>
-    </section>
-  </main>
-
-  <footer role="contentinfo">
-    <p>&copy; 2025 Well‑Be. All rights reserved.</p>
-  </footer>
-
-  <script src="script.js" defer></script>
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js');
-    }
-  </script>
-</body>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
