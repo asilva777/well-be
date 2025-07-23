@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&family=Roboto+Condensed:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 100%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 302 88% 42%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 302 88% 42%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 302 88% 42%;
+    --muted-foreground: 0 0% 100%;
+
+    --accent: 54 92% 56%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 302 88% 42%;
+    --input: 302 88% 42%;
+    --ring: 302 88% 42%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 302 88% 42%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 302 88% 42%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 54 92% 56%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 302 88% 42%;
+    --sidebar-ring: 302 88% 42%;
+  }
+
+  .dark {
+    --background: 302 88% 42%;
+    --foreground: 0 0% 100%;
+
+    --card: 302 88% 42%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 302 88% 42%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 302 88% 42%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 302 88% 42%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 302 88% 42%;
+    --muted-foreground: 0 0% 100%;
+
+    --accent: 54 92% 56%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 302 88% 42%;
+    --input: 302 88% 42%;
+    --ring: 302 88% 42%;
+
+    --sidebar-background: 302 88% 42%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 302 88% 42%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 54 92% 56%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 302 88% 42%;
+    --sidebar-ring: 302 88% 42%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-[#c80ec9] text-white font-[Montserrat];
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-[Oswald];
+  }
+
+  .condensed {
+    @apply font-[Roboto_Condensed];
+  }
+
+  .accent-text {
+    @apply text-[#f3e329];
+  }
+
+  .button-bg {
+    @apply bg-[#b425aa];
+  }
+}
