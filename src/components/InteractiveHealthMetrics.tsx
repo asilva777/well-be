@@ -5,14 +5,20 @@ import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Heart, Activity, Moon, Zap, TrendingUp, TrendingDown, Info } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import HRVMeasurementButton from './HRVMeasurementButton';
 
 const InteractiveHealthMetrics = () => {
-  const [selectedMetric, setSelectedMetric] = useState(null);
+  const [hrvValue, setHrvValue] = useState(45);
+  
+  const handleHRVComplete = (result: { hrv: number; heartRate: number }) => {
+    setHrvValue(result.hrv);
+    console.log('New HRV measurement:', result);
+  };
   
   const metrics = [
     {
       title: 'HRV Score',
-      value: 45,
+      value: hrvValue,
       max: 100,
       icon: Heart,
       color: 'text-red-500',
@@ -22,10 +28,11 @@ const InteractiveHealthMetrics = () => {
       trendDirection: 'up',
       details: {
         range: 'Normal (40-60 ms)',
-        lastWeek: [42, 38, 45, 48, 44, 46, 45],
+        lastWeek: [42, 38, 45, 48, 44, 46, hrvValue],
         insights: 'Your HRV is improving. Consider maintaining current sleep schedule.',
         recommendations: ['Keep consistent sleep times', 'Continue meditation practice']
-      }
+      },
+      hasAction: true
     },
     {
       title: 'Stress Level',
@@ -138,6 +145,16 @@ const InteractiveHealthMetrics = () => {
                   <span className="text-3xl font-bold">{metric.value}</span>
                   <Badge variant="outline">{metric.details.range}</Badge>
                 </div>
+                
+                {metric.hasAction && (
+                  <div className="flex justify-center">
+                    <HRVMeasurementButton 
+                      onComplete={handleHRVComplete}
+                      variant="outline"
+                      size="sm"
+                    />
+                  </div>
+                )}
                 
                 <div>
                   <h4 className="font-semibold mb-2">7-Day Trend</h4>
