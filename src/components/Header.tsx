@@ -1,58 +1,145 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Bell, Settings, User, Heart } from 'lucide-react';
+import { Bell, Settings, Menu, X } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import GreetingMessage from './GreetingMessage';
+import AuthModal from './AuthModal';
+import NotificationPanel from './NotificationPanel';
+import ProfileMenu from './ProfileMenu';
 
 const Header = () => {
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [showNotifications, setShowNotifications] = useState(false);
+  const [showNavMenu, setShowNavMenu] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+  };
+
+  const handleSettingsClick = () => {
+    navigate('/settings');
+  };
+
+  const navigationLinks = [
+    { name: 'HOME', url: 'https://home.cognitio-plus.com' },
+    { name: 'SOLUTIONS', url: 'https://solutions.cognitio-plus.com' },
+    { name: 'SERVICES', url: 'https://services.cognitio-plus.com' },
+    { name: 'BLOG', url: 'https://blog.cognitio-plus.com' },
+    { name: 'RESOURCES', url: 'https://resources.cognitio-plus.com' },
+    { name: 'STORE', url: 'https://store.cognitio-plus.com' },
+    { name: 'GROWTH TRIBE', url: 'https://growth.cognitio-plus.com' },
+    { name: 'FAQ', url: 'https://faq.cognitio-plus.com' },
+    { name: 'ABOUT US', url: 'https://about.cognitio-plus.com' },
+    { name: 'POLICIES', url: 'https://policies.cognitio-plus.com' },
+    { name: 'CONTACT US', url: 'https://contact.cognitio-plus.com' },
+    { name: 'SUPPORT', url: 'https://support.cognitio-plus.com' },
+    { name: 'APP', url: 'https://app.cognitio-plus.com' }
+  ];
+
   return (
-    <header className="bg-white border-b border-gray-200 px-6 py-4">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-red-500 to-pink-500 rounded-lg flex items-center justify-center">
-              <Heart className="h-5 w-5 text-white" />
-            </div>
-            <div>
-              <h1 className="text-xl font-bold bg-gradient-to-r from-red-500 to-pink-500 bg-clip-text text-transparent">
-                Well-Be
-              </h1>
-              <p className="text-xs text-muted-foreground">by Cognitio+</p>
-            </div>
+    <>
+      <header className="bg-[#c80ec9] border-b border-[#b425aa] px-6 py-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <a href="https://cognitio-plus.com" className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center">
+                <img 
+                  src="https://cognitio-plus.appimize.app/assets/apps/user_1097/app_3046/draft/icon/app_logo.png?1752092909" 
+                  alt="Well-Be Logo" 
+                  className="w-8 h-8 rounded-lg"
+                />
+              </div>
+              <div>
+                <h1 className="text-xl font-bold text-[#f3e329] font-[Oswald]">
+                  Well-Be
+                </h1>
+                <p className="text-xs text-white">by Cognitio+</p>
+              </div>
+            </a>
+          </div>
+          
+          <div className="flex items-center gap-3">
+            <Button 
+              variant="ghost" 
+              size="sm"
+              className="md:hidden text-white hover:bg-[#b425aa]"
+              onClick={() => setShowNavMenu(!showNavMenu)}
+            >
+              {showNavMenu ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+            </Button>
+            
+            {isLoggedIn && (
+              <Badge className="bg-[#f3e329] text-[#c80ec9] border-[#f3e329]">
+                Premium
+              </Badge>
+            )}
+            
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              className="relative text-white hover:bg-[#b425aa]"
+              onClick={() => setShowNotifications(true)}
+            >
+              <Bell className="h-4 w-4" />
+              <div className="absolute -top-1 -right-1 w-2 h-2 bg-[#f3e329] rounded-full"></div>
+            </Button>
+            
+            <Button 
+              variant="ghost" 
+              size="sm"
+              className="text-white hover:bg-[#b425aa]"
+              onClick={handleSettingsClick}
+            >
+              <Settings className="h-4 w-4" />
+            </Button>
+            
+            <ProfileMenu 
+              isLoggedIn={isLoggedIn}
+              onAuthClick={() => setShowAuthModal(true)}
+              onLogout={handleLogout}
+            />
           </div>
         </div>
         
-        <div className="flex items-center gap-3">
-          <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200">
-            Premium
-          </Badge>
-          
-          <Button variant="ghost" size="sm" className="relative">
-            <Bell className="h-4 w-4" />
-            <div className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full"></div>
-          </Button>
-          
-          <Button variant="ghost" size="sm">
-            <Settings className="h-4 w-4" />
-          </Button>
-          
-          <Button variant="ghost" size="sm">
-            <div className="w-6 h-6 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
-              <User className="h-3 w-3 text-white" />
+        {showNavMenu && (
+          <div className="mt-4 md:hidden">
+            <div className="grid grid-cols-2 gap-2">
+              {navigationLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white hover:text-[#f3e329] text-sm py-2 px-3 rounded hover:bg-[#b425aa] transition-colors font-[Roboto_Condensed]"
+                >
+                  {link.name}
+                </a>
+              ))}
             </div>
-          </Button>
-        </div>
-      </div>
+          </div>
+        )}
+        
+        <GreetingMessage />
+      </header>
       
-      <div className="mt-4">
-        <div className="flex items-center gap-2 mb-2">
-          <h2 className="text-2xl font-bold">Good morning, Alex!</h2>
-          <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-        </div>
-        <p className="text-muted-foreground">
-          Your heart health is looking great today. Ready to optimize your wellness?
-        </p>
-      </div>
-    </header>
+      <AuthModal 
+        isOpen={showAuthModal} 
+        onClose={() => setShowAuthModal(false)}
+        onLogin={handleLogin}
+      />
+      
+      <NotificationPanel 
+        isOpen={showNotifications} 
+        onClose={() => setShowNotifications(false)} 
+      />
+    </>
   );
 };
 
